@@ -30,7 +30,7 @@ function GoogleLogin() {
 
   return (
     <span onClick={googleSignin} className="text-gray-700 font-medium cursor-pointer">
-    Continuer avec Google
+    se connecter avec Google
 </span>
   )
 }
