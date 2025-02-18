@@ -19,9 +19,9 @@ export default function Login() {
     e.preventDefault()
     setMessage("")
 
-    if (password.length < 6) {
-      setMessage("Le mot de passe doit contenir au moins 6 caractères.")
-      toast.error("Le mot de passe doit contenir au moins 6 caractères.")
+    if (password.length < 8) {
+      setMessage("Le mot de passe doit contenir au moins 8 caractères.")
+      toast.error("Le mot de passe doit contenir au moins 8 caractères.")
       return
     }
 
@@ -38,7 +38,7 @@ export default function Login() {
       const user = userCredential.user;
   
       // Vérifier l'existence de l'utilisateur dans Firestore
-      const userRef = doc(database, "Users", user.uid); // ✅ UTILISER L'UID
+      const userRef = doc(database, "Users", user.uid)
       const userSnap = await getDoc(userRef);
   
       if (!userSnap.exists()) {
@@ -65,7 +65,7 @@ export default function Login() {
           setMessage("Problème de connexion internet.")
           toast.error("Vérifiez votre connexion.")
       } else if (error.code === "auth/invalid-credential") {
-          setMessage("Identifiants invalides. Vérifiez votre email et mot de passe.")
+          setMessage("Identifiants invalides. veillez vous inscire.")
           toast.error("Identifiants invalides. Vérifiez votre email et mot de passe.")
       } else {
           setMessage("Erreur lors de la connexion. Vérifiez vos identifiants.")
@@ -127,7 +127,7 @@ export default function Login() {
 
         {/* Message d'état */}
         {message && (
-          <div className={`text-center text-sm mt-4 ${message.includes("incorrect") ? "text-red-500" : "text-green-500"}`}>
+          <div className={`text-center text-sm mt-4 ${message.includes("incorrect") ?  "text-green-500" : "text-red-500"}`}>
             {message}
           </div>
         )}
